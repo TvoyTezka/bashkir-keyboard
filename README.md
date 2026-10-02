@@ -1,5 +1,10 @@
 # Башҡорт Keyboard
 
+[![Build](https://github.com/TvoyTezka/bashkort-keyboard/actions/workflows/build.yml/badge.svg)](https://github.com/TvoyTezka/bashkort-keyboard/actions/workflows/build.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-158578.svg)](LICENSE)
+
+**[Сайт](https://tvoytezka.github.io/bashkort-keyboard/) · [Скачать приложение](https://github.com/TvoyTezka/bashkort-keyboard/releases/latest) · [Сообщить об ошибке](https://github.com/TvoyTezka/bashkort-keyboard/issues/new/choose)**
+
 Небольшое приложение для Windows 10/11 на C# / .NET 10 LTS, WPF и WinForms NotifyIcon.
 При коротком нажатии вводится обычная русская буква **сразу**; при непрерывном удержании она заменяется башкирской, если приложение может проверить положение курсора.
 
