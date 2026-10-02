@@ -1,4 +1,4 @@
-# Bashkort Keyboard
+# Bashkir Keyboard
 
 Type Bashkir letters on the familiar Russian keyboard layout: tap for a Russian letter, hold for a Bashkir letter. A background utility for Windows 10/11.
 

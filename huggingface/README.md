@@ -1,5 +1,5 @@
 ---
-title: Bashkort Keyboard
+title: Bashkir Keyboard
 emoji: ⌨️
 colorFrom: green
 colorTo: blue
@@ -17,7 +17,7 @@ tags:
 pinned: true
 ---
 
-# Bashkort Keyboard
+# Bashkir Keyboard
 
 Type Bashkir letters on the familiar Russian keyboard layout. Tap for a Russian letter; hold for a Bashkir letter.
 

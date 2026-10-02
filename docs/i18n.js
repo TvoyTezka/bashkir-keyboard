@@ -1,5 +1,5 @@
 const russianTranslations = {
-  "Bashkort Keyboard": "Башҡорт Keyboard",
+  "Bashkir Keyboard": "Башҡорт Keyboard",
   "Navigation": "Навигация",
   "How it works": "Как работает",
   "FAQ": "Вопросы",
@@ -68,7 +68,7 @@ const russianTranslations = {
   "Open source · MIT ↗": "Открытый код · MIT ↗",
   "View downloads ↓": "Перейти к скачиванию ↓",
   "Download for Windows ↓": "Скачать для Windows ↓",
-  "Bashkort Keyboard — Bashkir letters with a key hold": "Башҡорт Keyboard — башкирские буквы одним удержанием",
+  "Bashkir Keyboard — Bashkir letters with a key hold": "Башҡорт Keyboard — башкирские буквы одним удержанием",
   "Type Bashkir letters on the familiar Russian layout. A free, open-source Windows utility: tap or hold a key.": "Башкирские буквы на привычной русской раскладке. Бесплатная Windows-утилита с открытым кодом: нажмите коротко или удерживайте клавишу.",
   "А, hold for Ә": "А, при удержании Ә",
   "О, hold for Ө": "О, при удержании Ө",
