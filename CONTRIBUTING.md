@@ -1,3 +1,29 @@
+# Contributing
+
+Bug reports and fixes for unsupported text fields are welcome.
+
+See [TECHNICAL.md](TECHNICAL.md) for architecture, limitations and manual checks.
+
+To build and test, use Windows with the .NET 10 SDK. Open `BashkortKeyboard.sln` or run:
+
+```powershell
+dotnet build BashkortKeyboard.sln -c Release
+dotnet run --project tests/BashkortKeyboard.Tests -c Release
+dotnet run --project tests/BashkortKeyboard.NativeTests -c Release -- --load-test-layout
+```
+
+If Russian is not already loaded, `--load-test-layout` temporarily loads the standard layout in the test process without activating it or changing preferred languages. The app never uses this option.
+
+When editing keyboard handling, keep the first keydown immediate, preserve fast typing order, cancel pending replacements after unrelated input, and skip a replacement when caret position cannot be verified. Never send a blind Backspace or log typed text or key codes.
+
+For a bug fix, add a scenario that reproduces it. Describe completed checks in the pull request. Keep simulated timer tests distinct from checks in real editors.
+
+Issue reports should include the Windows version, app and editor, keyboard layout and steps to reproduce. Use sample text; do not attach passwords, personal documents or tokens.
+
+The project is licensed under MIT. Contributions must be compatible with that license.
+
+---
+
 # Как помочь проекту
 
 Приветствуются исправления и сообщения о несовместимых текстовых полях.

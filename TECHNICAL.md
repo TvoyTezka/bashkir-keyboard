@@ -1,3 +1,53 @@
+# Technical notes
+
+This document records the input-safety design, known limitations and verification steps for developers and reviewers. Application behaviour and settings are summarized in [README.md](README.md); build and test commands are in [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## Input handling
+
+1. A low-level keyboard hook passes the first keydown through immediately. The hook callback does not read document content or run UI Automation.
+2. The app checks settings, modifier keys, the foreground layout and `ToUnicodeEx`. Unsupported and English-layout keys use normal Windows input.
+3. Each held key gets an independent ID, state and one-shot timers. The hook has its own message loop; context and timer state are serialized there.
+4. A separate MTA thread verifies that a text field is available, editable, non-password and supports `TextPattern`. It saves the caret endpoint after the ordinary letter is entered and checks only one character before the caret.
+5. Another key, modifier change, mouse input, or a change of window, focus or keyboard layout cancels the pending replacement. The context is checked about every 20 ms.
+6. At the hold threshold, the app rechecks the same UIA element, selection, caret endpoint, preceding letter and process integrity. Responses older than 180 ms are ignored.
+7. The hook performs a final context check and sends one `SendInput` sequence: Backspace down/up and Unicode down/up. Injected events are marked so the hook ignores its own input. Physical keyup always passes through.
+
+Autorepeat for a safe pending candidate is suppressed to prevent multiple ordinary letters appearing before the hold threshold. A tap still has no initial delay. After cancellation, normal repeat resumes; skipped repeats are not replayed.
+
+## Compatibility limits
+
+Windows does not provide a universal transaction for replacing the exact character produced by a keydown. There is a small interval between checking the caret and sending replacement input. Editors and accessibility providers can change focus or text during that interval. The app uses conservative checks, but cannot guarantee compatibility with every editor or every edit.
+
+- Replacement requires an editable field with a working UI Automation `TextPattern` and a verifiable caret. If those checks fail, the app preserves ordinary input.
+- Password fields are skipped when Windows or the accessibility provider correctly identifies them as passwords.
+- After focus moves to a new field, the first key can pass through before the app has identified that field. Slow UIA providers can also cause a replacement to be skipped.
+- A normal process cannot send input into an elevated process. The app does not elevate itself.
+- Protected View, IMEs, games, terminals, remote desktops and apps with custom text input need individual checks. Partial `SendInput` failures are not retried with another Backspace.
+- When two mapped keys overlap, the earlier candidate is cancelled. Windows can remove a timed-out hook; if input stops being transformed, restart the app.
+
+## Settings and logging
+
+Settings are stored in `%LOCALAPPDATA%\BashkortKeyboard\settings.json`. Autostart uses a user-level Startup shortcut named `Bashkort Keyboard.lnk` with `--background`. Turning autostart off removes that shortcut. If the app folder moves, switch autostart off and on again to update the path.
+
+Optional diagnostics are written to `%LOCALAPPDATA%\BashkortKeyboard\diagnostics.log`. The log records timestamps and fixed event categories, never typed characters, key codes, document text, window titles, clipboard contents or passwords.
+
+## Testing
+
+`BashkortKeyboard.Tests` covers short and held presses, case, fast typing order, cancellation and stale asynchronous context checks. `BashkortKeyboard.NativeTests` checks `ToUnicodeEx` results for the mapped keys, Shift and Caps Lock, plus WinAPI structures and process-integrity behaviour.
+
+Native tests do not synthesize keyboard input into another editor. Their assertions do not establish compatibility with a particular text field. Check the target editor manually: type quickly, tap and hold a mapped key, try Shift and Caps Lock, change focus or layout during a hold, and check a password field.
+
+## Windows API references
+
+- [LowLevelKeyboardProc](https://learn.microsoft.com/en-us/windows/win32/winmsg/lowlevelkeyboardproc)
+- [SendInput](https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-sendinput)
+- [GetGUIThreadInfo](https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getguithreadinfo)
+- [GetKeyboardLayout](https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getkeyboardlayout)
+- [ToUnicodeEx](https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-tounicodeex)
+- [UI Automation TextPattern](https://learn.microsoft.com/en-us/dotnet/framework/ui-automation/ui-automation-textpattern-overview)
+
+---
+
 # Технические подробности
 
 Для разработки нужны Windows и .NET SDK 10. Команды сборки и тестов приведены в [CONTRIBUTING.md](CONTRIBUTING.md).

@@ -1,31 +1,31 @@
-name: Ошибка ввода
-description: Некорректная замена, совместимость редактора или другая ошибка
-title: "[Ошибка]: "
+name: Bug report / Сообщить об ошибке
+description: Report incorrect input, editor compatibility or another issue / Сообщите о некорректном вводе или несовместимости редактора
+title: "[Bug]: "
 body:
   - type: input
     id: version
     attributes:
-      label: Версия Башҡорт Keyboard
-      placeholder: Например, 1.0.0
+      label: App version / Версия приложения
+      placeholder: For example, 1.0.0 / Например, 1.0.0
     validations:
       required: true
   - type: input
     id: environment
     attributes:
-      label: Windows и редактор
-      placeholder: Windows 11, Блокнот, стандартная RU-раскладка
+      label: Windows version and editor / Версия Windows и редактор
+      placeholder: Windows 11, Notepad, standard Russian layout / Windows 11, Блокнот, стандартная русская раскладка
     validations:
       required: true
   - type: textarea
     id: steps
     attributes:
-      label: Шаги воспроизведения
-      description: Используйте выдуманный текст. Не прикладывайте пароли и личные документы.
+      label: Steps to reproduce / Шаги воспроизведения
+      description: Use sample text. Do not include passwords or personal documents. / Используйте выдуманный текст. Не прикладывайте пароли и личные документы.
     validations:
       required: true
   - type: textarea
     id: result
     attributes:
-      label: Ожидаемый и фактический результат
+      label: Expected and actual result / Ожидаемый и фактический результат
     validations:
       required: true

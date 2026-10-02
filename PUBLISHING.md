@@ -1,3 +1,64 @@
+# Publishing to GitHub
+
+The Git repository should contain the complete `BashkortKeyboard` project, not the parent `Tools` folder. Commit source files, tests, docs, workflows and website files. Build outputs are excluded by `.gitignore`.
+
+## Connect a repository
+
+Create an empty public repository without an initial README, license or `.gitignore`, then add it and push `main`:
+
+```powershell
+git remote add origin https://github.com/OWNER/REPOSITORY.git
+git push -u origin main
+```
+
+Replace `OWNER/REPOSITORY` with the repository name. Do not put a password or token in the URL. GitHub Desktop can add an existing local repository.
+
+## GitHub Pages
+
+Under GitHub Settings → Pages, select **GitHub Actions** as the source. If needed, run **Publish project website** from Actions after enabling Pages.
+
+The website lives in `docs` and does not require an external site builder. The workflow adds `repository.json` for links and release downloads. If the GitHub API is unavailable, the download button still links to Releases.
+
+Preview it locally with `python -m http.server 8080 --directory docs`, then open `http://localhost:8080`. Without `repository.json`, the button scrolls to the installation instructions. The site's 256 px icon is in `docs/assets/app-icon.png`; the source is `src/BashkortKeyboard/Assets/App.png`.
+
+## Releases
+
+The **Build and test** workflow builds pull requests and `main`, then saves the portable build as a temporary Actions artifact. It does not publish a release.
+
+For a release, update the version in the project file and the changelog, create a version tag and push it:
+
+```powershell
+git tag v1.0.0
+git push origin v1.0.0
+```
+
+**Prepare release** builds and tests the app, then creates a draft Release with a Windows x64 ZIP and SHA-256 checksum. Review it and select **Publish release**. Drafts are not visible to regular visitors.
+
+Native CI tests load the Russian layout only inside the test process if the hosted Windows runner does not have it loaded already.
+
+The ZIP includes the executable, runtime, README, license, privacy notes and Start menu script. User settings and logs under AppData are not included.
+
+The app is not digitally signed. Hosting on GitHub does not sign it. The hook should be checked manually in each target editor; CI does not establish compatibility with every text field.
+
+## License and attribution
+
+The MIT license currently credits `TvoyTezka`, the local Git author, and project contributors. Change the copyright line in `LICENSE` if a different public name is preferred.
+
+## Hugging Face Space
+
+Static page: https://huggingface.co/spaces/failed09/bashkir-keyboard. It uses the same files as GitHub Pages; the Windows app is downloaded from GitHub Releases.
+
+To refresh it after site changes:
+
+```powershell
+.\prepare-hf-space.ps1
+hf upload failed09/bashkir-keyboard artifacts/hf-space . --type space --commit-message 'Update website'
+```
+
+Sign in with `hf auth login`; never store the token in project files. The script packages only the site, license and Space card.
+
+---
+
 # Первая публикация на GitHub
 
 Репозиторием должна быть **папка BashkortKeyboard целиком**, а не вся папка Tools. Исходники, тесты, документы, `.github` и `docs` сохраняются в Git; результаты сборки исключены через `.gitignore`.
