@@ -3,7 +3,7 @@
   if (!output) return;
   let text = '';
   let active = null;
-  const render = () => { output.textContent = text || 'Здесь появятся буквы'; };
+  const render = () => { output.textContent = text || window.siteI18n.t('Your letters will appear here'); };
   function cancel() {
     if (!active) return;
     clearTimeout(active.timer);
@@ -64,6 +64,7 @@
   document.getElementById('try-clear').addEventListener('click', () => {
     cancel(); text = ''; render();
   });
+  document.addEventListener('languagechange', () => { cancel(); render(); });
   window.addEventListener('blur', cancel);
   document.addEventListener('visibilitychange', () => { if (document.hidden) cancel(); });
 })();

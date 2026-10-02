@@ -46,14 +46,14 @@ Workflow **Prepare release** выполняет сборку/тесты и со�
 
 ## Hugging Face Space
 
-Статическая страница: https://huggingface.co/spaces/failed09/bashkort-keyboard.
+Статическая страница: https://huggingface.co/spaces/failed09/bashkir-keyboard.
 Используются те же файлы сайта, что и для GitHub Pages. Windows-сборка скачивается из GitHub Releases.
 
 Для обновления страницы после изменений:
 
 ```powershell
 .\prepare-hf-space.ps1
-hf upload failed09/bashkort-keyboard artifacts/hf-space . --type space --commit-message 'Update website'
+hf upload failed09/bashkir-keyboard artifacts/hf-space . --type space --commit-message 'Update website'
 ```
 
 Вход через `hf auth login`; токен не добавляйте в файлы проекта. Скрипт подготавливает только файлы сайта, лицензию и карточку Space.

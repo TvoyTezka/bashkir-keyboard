@@ -1,59 +1,60 @@
 <!doctype html>
-<html lang="ru">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Башкирские буквы на привычной русской раскладке. Бесплатная Windows-утилита с открытым кодом: нажмите коротко или удерживайте клавишу.">
+  <meta name="description" content="Type Bashkir letters on the familiar Russian layout. A free, open-source Windows utility: tap or hold a key.">
   <meta name="theme-color" content="#147d72">
-  <title>Башҡорт Keyboard — башкирские буквы одним удержанием</title>
+  <title>Bashkort Keyboard — Bashkir letters with a key hold</title>
   <link rel="icon" href="assets/app-icon.png">
   <link rel="stylesheet" href="style.css">
+  <script src="i18n.js" defer></script>
   <script src="site.js" defer></script>
   <script src="demo.js" defer></script>
 </head>
 <body>
   <header class="navigation container">
-    <a class="brand" href="#"><img src="assets/app-icon.png" width="38" height="38" alt="">Башҡорт Keyboard</a>
-    <nav aria-label="Навигация"><a href="#how">Как работает</a><a href="#questions">Вопросы</a><a data-repo hidden>GitHub ↗</a></nav>
+    <a class="brand" href="#"><img src="assets/app-icon.png" width="38" height="38" alt="">Bashkort Keyboard</a>
+    <nav aria-label="Navigation"><a href="#how">How it works</a><a href="#questions">FAQ</a><a data-repo hidden>GitHub ↗</a><div class="language-switch" role="group" aria-label="Language"><button type="button" data-language="en" aria-pressed="true">EN</button><button type="button" data-language="ru" aria-pressed="false">RU</button></div></nav>
   </header>
   <main>
     <section class="hero container">
       <div class="hero-copy">
-        <span class="eyebrow"><span class="status-dot"></span> Для Windows 10 и 11 · x64</span>
-        <h1>Пишите по-башкирски.<br><span>На привычных клавишах.</span></h1>
-        <p class="lead">Короткое нажатие — русская буква. Удержание — башкирская. Без переключения на другую раскладку и без задержки обычной печати.</p>
-        <div class="actions"><a class="button primary" id="download" href="#installation">Как установить <span aria-hidden="true">↓</span></a><a class="button secondary" data-source hidden>Посмотреть код ↗</a></div>
-        <p class="download-note" id="release-note" role="status">Бесплатно · открытый код · .NET устанавливать не нужно</p>
+        <span class="eyebrow"><span class="status-dot"></span> For Windows 10 and 11 · x64</span>
+        <h1>Type in Bashkir.<br><span>On familiar keys.</span></h1>
+        <p class="lead">Tap for a Russian letter. Hold for a Bashkir letter. Keep your Russian layout and your usual typing speed.</p>
+        <div class="actions"><a class="button primary" id="download" href="#installation">How to install <span aria-hidden="true">↓</span></a><a class="button secondary" data-source hidden>View source ↗</a></div>
+        <p class="download-note" id="release-note" role="status">Free · open source · no .NET installation needed</p>
       </div>
-      <div class="demo" aria-label="Пример: удержание О заменяет о на ө">
-        <div class="demo-top"><img src="assets/app-icon.png" width="34" height="34" alt=""><span>Башҡорт Keyboard</span><span class="pill">Включено</span></div>
-        <div class="demo-label">ОДНА КЛАВИША. ДВА СИМВОЛА.</div>
-        <div class="letter-demo"><span class="keycap">О</span><span class="hold">удерживайте<br><strong>450 мс</strong><span class="arrow">→</span></span><span class="bashkir-letter">Ө</span></div>
+      <div class="demo" aria-label="Example: holding О replaces о with ө">
+        <div class="demo-top"><img src="assets/app-icon.png" width="34" height="34" alt=""><span>Bashkort Keyboard</span><span class="pill">Enabled</span></div>
+        <div class="demo-label">ONE KEY. TWO LETTERS.</div>
+        <div class="letter-demo"><span class="keycap">О</span><span class="hold">hold for<br><strong>450 ms</strong><span class="arrow">→</span></span><span class="bashkir-letter">Ө</span></div>
         <div class="demo-divider"></div>
-        <div class="demo-caption"><span>Короткое нажатие <strong>о</strong></span><span>С Shift <strong>Ө</strong></span></div>
-        <p>Привычное движение — нужная буква.</p>
+        <div class="demo-caption"><span>Tap <strong>о</strong></span><span>With Shift <strong>Ө</strong></span></div>
+        <p>A familiar key. The letter you need.</p>
       </div>
     </section>
     <section class="try-section container" aria-labelledby="try-title">
-      <span class="eyebrow">ПОПРОБУЙТЕ ПРЯМО ЗДЕСЬ</span>
-      <h2 id="try-title">Одно нажатие. Две буквы.</h2>
-      <p>Нажмите кнопку коротко для русской буквы или удерживайте 450 мс для башкирской. На телефоне — удерживайте пальцем.</p>
-      <div class="try-keys" aria-label="Кнопки для демонстрации">
-        <button type="button" data-letter="а" data-hold="ә" aria-label="А, при удержании Ә">А <small>Ә</small></button>
-        <button type="button" data-letter="о" data-hold="ө" aria-label="О, при удержании Ө">О <small>Ө</small></button>
-        <button type="button" data-letter="у" data-hold="ү" aria-label="У, при удержании Ү">У <small>Ү</small></button>
-        <button type="button" data-letter="к" data-hold="ҡ" aria-label="К, при удержании Ҡ">К <small>Ҡ</small></button>
-        <button type="button" data-letter="г" data-hold="ғ" aria-label="Г, при удержании Ғ">Г <small>Ғ</small></button>
-        <button type="button" data-letter="с" data-hold="ҫ" aria-label="С, при удержании Ҫ">С <small>Ҫ</small></button>
-        <button type="button" data-letter="з" data-hold="ҙ" aria-label="З, при удержании Ҙ">З <small>Ҙ</small></button>
-        <button type="button" data-letter="х" data-hold="һ" aria-label="Х, при удержании Һ">Х <small>Һ</small></button>
-        <button type="button" data-letter="н" data-hold="ң" aria-label="Н, при удержании Ң">Н <small>Ң</small></button>
+      <span class="eyebrow">TRY IT HERE</span>
+      <h2 id="try-title">One key. Two letters.</h2>
+      <p>Tap a button for a Russian letter or hold it for 450 ms for a Bashkir letter. On mobile, press and hold with your finger.</p>
+      <div class="try-keys" aria-label="Demo buttons">
+        <button type="button" data-letter="а" data-hold="ә" aria-label="А, hold for Ә">А <small>Ә</small></button>
+        <button type="button" data-letter="о" data-hold="ө" aria-label="О, hold for Ө">О <small>Ө</small></button>
+        <button type="button" data-letter="у" data-hold="ү" aria-label="У, hold for Ү">У <small>Ү</small></button>
+        <button type="button" data-letter="к" data-hold="ҡ" aria-label="К, hold for Ҡ">К <small>Ҡ</small></button>
+        <button type="button" data-letter="г" data-hold="ғ" aria-label="Г, hold for Ғ">Г <small>Ғ</small></button>
+        <button type="button" data-letter="с" data-hold="ҫ" aria-label="С, hold for Ҫ">С <small>Ҫ</small></button>
+        <button type="button" data-letter="з" data-hold="ҙ" aria-label="З, hold for Ҙ">З <small>Ҙ</small></button>
+        <button type="button" data-letter="х" data-hold="һ" aria-label="Х, hold for Һ">Х <small>Һ</small></button>
+        <button type="button" data-letter="н" data-hold="ң" aria-label="Н, hold for Ң">Н <small>Ң</small></button>
       </div>
-      <div class="try-result"><output id="try-output" aria-label="Результат демонстрации" aria-live="polite">Здесь появятся буквы</output><button type="button" id="try-clear">Очистить</button></div>
-      <p class="try-note">Демонстрация работает только с этими кнопками. Для ввода в других приложениях скачайте программу для Windows. Буквы не сохраняются и не отправляются.</p>
+      <div class="try-result"><output id="try-output" aria-label="Demo output" aria-live="polite">Your letters will appear here</output><button type="button" id="try-clear">Clear</button></div>
+      <p class="try-note">This demo works only with these buttons. Download the Windows app to type in other applications. Letters are never stored or sent.</p>
     </section>
     <section class="mapping-section container" aria-labelledby="letters-title">
-      <div class="section-intro"><span class="eyebrow">ВСЕ НУЖНЫЕ БУКВЫ</span><h2 id="letters-title">Девять соответствий.<br>Ничего лишнего.</h2><p>Каждую замену можно включить отдельно.<br>Регистр учитывает Shift и Caps Lock.</p></div>
+      <div class="section-intro"><span class="eyebrow">ALL THE LETTERS YOU NEED</span><h2 id="letters-title">Nine mappings.<br>Just what you need.</h2><p>Enable each mapping individually.<br>Shift and Caps Lock control letter case.</p></div>
       <div class="mapping-grid">
         <div><span>А</span><i>→</i><strong>Ә</strong></div><div><span>О</span><i>→</i><strong>Ө</strong></div><div><span>У</span><i>→</i><strong>Ү</strong></div>
         <div><span>К</span><i>→</i><strong>Ҡ</strong></div><div><span>Г</span><i>→</i><strong>Ғ</strong></div><div><span>С</span><i>→</i><strong>Ҫ</strong></div>
@@ -61,26 +62,26 @@
       </div>
     </section>
     <section class="how container" id="how">
-      <span class="eyebrow">ПРОСТО В ПОВСЕДНЕВНОЙ РАБОТЕ</span><h2>Работает в фоне.<br>Управление — в трее.</h2>
+      <span class="eyebrow">MADE FOR EVERYDAY USE</span><h2>Runs in the background.<br>Controls in the system tray.</h2>
       <div class="feature-grid">
-        <article><span class="feature-number">01</span><h3>Печатайте в своём темпе</h3><p>Обычная буква появляется сразу. При быстром вводе приложение не ждёт таймер и не переставляет символы.</p></article>
-        <article><span class="feature-number">02</span><h3>Настройте под себя</h3><p>Выберите задержку от 250 до 800 мс, нужные соответствия и запуск вместе с Windows. Всё сохраняется локально.</p></article>
-        <article><span class="feature-number">03</span><h3>Ваш текст остаётся у вас</h3><p>В приложении нет аналитики и сетевой отправки. Диагностический журнал не содержит введённый текст.</p></article>
+        <article><span class="feature-number">01</span><h3>Type at your own pace</h3><p>Regular letters appear immediately. Fast typing stays in order, without waiting for the hold timer.</p></article>
+        <article><span class="feature-number">02</span><h3>Make it yours</h3><p>Choose a hold delay from 250 to 800 ms, enable your preferred mappings and start with Windows. Settings stay on your computer.</p></article>
+        <article><span class="feature-number">03</span><h3>Your text stays with you</h3><p>The app has no analytics and never sends your text over the network. Diagnostic logs do not contain what you type.</p></article>
       </div>
     </section>
     <section class="installation container" id="installation">
-      <div><span class="eyebrow">БЕЗ УСТАНОВЩИКА</span><h2>Распакуйте.<br>Запустите. Пишите.</h2><p>Переносимая сборка уже включает .NET.<br>Храните все файлы из архива вместе.</p><a class="text-link" data-releases hidden>Все выпуски и файлы ↗</a></div>
-      <ol><li><span>1</span><div><h3>Скачайте ZIP для Windows x64</h3><p>Выберите файл BashkortKeyboard…win-x64.zip в последнем выпуске.</p></div></li><li><span>2</span><div><h3>Распакуйте в постоянную папку</h3><p>Например, в папку приложений. Не запускайте программу внутри ZIP.</p></div></li><li><span>3</span><div><h3>Откройте BashkortKeyboard.exe</h3><p>Включите русскую раскладку. Для башкирской буквы удерживайте нужную клавишу.</p></div></li></ol>
+      <div><span class="eyebrow">NO INSTALLER NEEDED</span><h2>Extract.<br>Launch. Type.</h2><p>The portable download includes .NET.<br>Keep all extracted files together.</p><a class="text-link" data-releases hidden>All releases and downloads ↗</a></div>
+      <ol><li><span>1</span><div><h3>Download the Windows x64 ZIP</h3><p>Choose BashkortKeyboard…win-x64.zip from the latest release.</p></div></li><li><span>2</span><div><h3>Extract to a permanent folder</h3><p>For example, use your applications folder. Do not run the app from inside the ZIP.</p></div></li><li><span>3</span><div><h3>Run BashkortKeyboard.exe</h3><p>Switch to the Russian layout. Hold a mapped key to type a Bashkir letter.</p></div></li></ol>
     </section>
     <section class="questions container" id="questions">
-      <h2>Перед первым запуском</h2>
-      <details open><summary>В каких приложениях работает замена?</summary><p>Обработка клавиатуры глобальная, но замена зависит от доступности текстового поля через Windows UI Automation. Если положение курсора проверить нельзя, приложение оставляет обычный ввод. Совместимость всех версий редакторов не гарантируется.</p></details>
-      <details><summary>Почему Windows может показать предупреждение?</summary><p>Сборка пока не подписана цифровой подписью. Windows может предупредить о неизвестном издателе. Открытый код позволяет изучить приложение и собрать его самостоятельно, но не заменяет цифровую подпись.</p></details>
-      <details><summary>Что происходит, если нажать другую клавишу?</summary><p>Ожидающая замена отменяется. Щелчок, смена окна или раскладки тоже отменяют удержание. Это помогает избежать удаления другой буквы.</p></details>
-      <details><summary>Можно ли оставить английскую раскладку?</summary><p>На английской раскладке замены отключены. Для башкирского ввода переключитесь на обычную русскую раскладку.</p></details>
-      <details><summary>Приложение читает и сохраняет мой текст?</summary><p>Для проверки замены оно кратковременно сравнивает один символ перед курсором в доступном непарольном поле. Этот текст не сохраняется и не отправляется. Полное описание доступно в документе о приватности.</p><a data-privacy hidden>Описание приватности ↗</a></details>
+      <h2>Before you start</h2>
+      <details open><summary>Which applications are supported?</summary><p>Keyboard handling is global, but replacement depends on the text field being accessible through Windows UI Automation. If the caret position cannot be verified, regular typing is preserved. Support for every editor version is not guaranteed.</p></details>
+      <details><summary>Why might Windows show a warning?</summary><p>The app is not digitally signed yet, so Windows may warn about an unknown publisher. Open source lets you inspect and build the app yourself, but does not replace code signing.</p></details>
+      <details><summary>What if I press another key?</summary><p>The pending replacement is cancelled. Clicking, switching windows or changing the keyboard layout also cancels the hold, helping prevent another letter from being removed.</p></details>
+      <details><summary>Can I use the English layout?</summary><p>Replacements are disabled on the English layout. Switch to the standard Russian layout to type Bashkir letters.</p></details>
+      <details><summary>Does the app read or store my text?</summary><p>To verify a replacement, the app briefly checks one character before the caret in an accessible field that is not a password field. That text is never stored or sent. See the privacy document for details.</p><a data-privacy hidden>Privacy details ↗</a></details>
     </section>
   </main>
-  <footer class="container"><div class="brand"><img src="assets/app-icon.png" width="28" height="28" alt="">Башҡорт Keyboard</div><p>Небольшой инструмент для родного языка.</p><a data-license hidden>Открытый код · MIT ↗</a></footer>
+  <footer class="container"><div class="brand"><img src="assets/app-icon.png" width="28" height="28" alt="">Bashkort Keyboard</div><p>A small tool for your native language.</p><a data-license hidden>Open source · MIT ↗</a></footer>
 </body>
 </html>

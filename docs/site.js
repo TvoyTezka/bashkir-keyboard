@@ -21,7 +21,15 @@ async function configureRepository() {
   button.target = '_blank';
   button.rel = 'noopener noreferrer';
   button.href = `${root}/releases`;
-  button.textContent = 'Перейти к скачиванию ↓';
+  let releaseDetails = null;
+  const renderDownload = () => {
+    button.textContent = window.siteI18n.t(releaseDetails ? 'Download for Windows ↓' : 'View downloads ↓');
+    document.getElementById('release-note').textContent = releaseDetails
+      ? `${releaseDetails.tag} · ${releaseDetails.size} ${window.siteI18n.language === 'ru' ? 'МБ' : 'MB'} · Windows x64 · ${window.siteI18n.language === 'ru' ? 'бесплатно' : 'free'}`
+      : window.siteI18n.t('Free · open source · no .NET installation needed');
+  };
+  document.addEventListener('languagechange', renderDownload);
+  renderDownload();
   try {
     const latest = await fetch(`https://api.github.com/repos/${repository}/releases/latest`, {
       headers: { Accept: 'application/vnd.github+json' }
@@ -33,9 +41,8 @@ async function configureRepository() {
     const url = new URL(asset.browser_download_url);
     if (url.origin !== 'https://github.com' || !url.pathname.startsWith(`/${repository}/releases/download/`)) return;
     button.href = url.href;
-    button.textContent = 'Скачать для Windows ↓';
-    document.getElementById('release-note').textContent =
-      `${release.tag_name} · ${Math.round(asset.size / 1024 / 1024)} МБ · Windows x64 · бесплатно`;
+    releaseDetails = { tag: release.tag_name, size: Math.round(asset.size / 1024 / 1024) };
+    renderDownload();
   } catch {
     // Releases link remains usable when API is offline or rate limited.
   }

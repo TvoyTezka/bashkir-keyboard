@@ -6,8 +6,8 @@ colorTo: blue
 sdk: static
 app_file: index.html
 license: mit
-short_description: Башкирские буквы удержанием клавиш · Windows
-thumbnail: https://huggingface.co/spaces/failed09/bashkort-keyboard/resolve/main/assets/app-icon.png
+short_description: Type Bashkir letters by holding keys · Windows
+thumbnail: https://huggingface.co/spaces/failed09/bashkir-keyboard/resolve/main/assets/app-icon.png
 tags:
   - bashkir
   - keyboard
@@ -17,12 +17,12 @@ tags:
 pinned: true
 ---
 
-# Башҡорт Keyboard
+# Bashkort Keyboard
 
-Башкирские буквы на привычной русской раскладке. Короткое нажатие — обычная буква, удержание — башкирская.
+Type Bashkir letters on the familiar Russian keyboard layout. Tap for a Russian letter; hold for a Bashkir letter.
 
-В этом Space можно попробовать принцип работы с помощью кнопок. Для ввода в других приложениях нужна программа для Windows 10/11 x64.
+Try the on-screen buttons in this Space. To type in other applications, download the Windows 10/11 x64 app. The website opens in English; use the EN / RU switch for Russian.
 
-**[Скачать для Windows](https://github.com/TvoyTezka/bashkort-keyboard/releases/latest) · [Исходный код](https://github.com/TvoyTezka/bashkort-keyboard) · [Сайт](https://tvoytezka.github.io/bashkort-keyboard/)**
+**[Download for Windows](https://github.com/TvoyTezka/bashkir-keyboard/releases/latest) · [Source code](https://github.com/TvoyTezka/bashkir-keyboard) · [Website](https://tvoytezka.github.io/bashkir-keyboard/)**
 
-Приложение бесплатно, с открытым кодом под MIT. Браузерная демонстрация обрабатывает буквы локально, без сохранения и отправки.
+Free and open source under MIT. Demo letters are processed locally, without storage or transmission. The app is not digitally signed yet. Text replacement depends on the editor supporting Windows UI Automation.
