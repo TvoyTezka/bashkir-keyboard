@@ -1,0 +1,43 @@
+name: Prepare release
+
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: windows-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-dotnet@v6
+        with:
+          dotnet-version: '10.0.x'
+      - name: Validate version tag
+        shell: pwsh
+        run: |
+          if ($env:GITHUB_REF_NAME -notmatch '^v\d+\.\d+\.\d+(-[A-Za-z0-9.-]+)?$') {
+            throw 'Use a version tag such as v1.0.0.'
+          }
+          [xml]$project = Get-Content -LiteralPath src/BashkortKeyboard/BashkortKeyboard.csproj -Raw
+          $version = [string]$project.Project.PropertyGroup.Version
+          if ($env:GITHUB_REF_NAME -ne "v$version") { throw 'Tag must match the Version in BashkortKeyboard.csproj.' }
+      - name: Build, verify and publish
+        shell: pwsh
+        run: ./build-release.ps1 -LoadTestLayout
+      - name: Archive and prepare draft release
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          $archivePath = "artifacts/BashkortKeyboard-$env:GITHUB_REF_NAME-win-x64.zip"
+          Compress-Archive -Path 'artifacts/win-x64/*' -DestinationPath $archivePath
+          $hash = (Get-FileHash -LiteralPath $archivePath -Algorithm SHA256).Hash.ToLowerInvariant()
+          $hashPath = "$archivePath.sha256"
+          "$hash  $([IO.Path]::GetFileName($archivePath))" | Set-Content -LiteralPath $hashPath -Encoding utf8NoBOM
+          gh release create $env:GITHUB_REF_NAME $archivePath $hashPath --draft --verify-tag --title "Bashkort Keyboard $env:GITHUB_REF_NAME" --notes-file CHANGELOG.md
+          if ($LASTEXITCODE -ne 0) { throw 'Draft release creation failed.' }

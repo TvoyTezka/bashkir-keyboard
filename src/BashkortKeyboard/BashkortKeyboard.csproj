@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType><TargetFramework>net10.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF><UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>disable</ImplicitUsings><Nullable>enable</Nullable>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon>Assets/App.ico</ApplicationIcon>
+    <AssemblyName>BashkortKeyboard</AssemblyName>
+    <Version>1.0.0</Version>
+  </PropertyGroup>
+  <ItemGroup><ProjectReference Include="../BashkortKeyboard.Core/BashkortKeyboard.Core.csproj" /></ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets/App.ico" />
+    <EmbeddedResource Include="Assets/App.ico" LogicalName="BashkortKeyboard.Assets.App.ico" />
+  </ItemGroup>
+</Project>

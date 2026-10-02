@@ -1,0 +1,53 @@
+<Window x:Class="BashkortKeyboard.MainWindow"
+ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+ Title="Башҡорт Keyboard" Icon="/Assets/App.ico" Width="620" Height="810" MinWidth="520" MinHeight="540"
+ Background="#F3F7F8" FontFamily="Segoe UI" FontSize="14" WindowStartupLocation="CenterScreen">
+ <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+  <StackPanel Margin="28">
+   <Grid Margin="0,0,0,24">
+    <Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+    <StackPanel><TextBlock Text="Башҡорт Keyboard" FontSize="27" FontWeight="SemiBold"/>
+     <TextBlock Text="Башкирские буквы на привычной русской раскладке" FontSize="12" Foreground="#667F87" Margin="0,7,0,0"/>
+    </StackPanel>
+    <Border Grid.Column="1" Background="#DFF1EC" CornerRadius="12" Padding="13,8" VerticalAlignment="Top" Margin="10,0,0,0">
+     <TextBlock Text="Ә" FontSize="25" FontWeight="SemiBold" Foreground="#147D72"/>
+    </Border>
+   </Grid>
+   <Border Style="{StaticResource Card}">
+    <StackPanel>
+     <DockPanel><CheckBox x:Name="EnabledBox" Content="Включено" FontSize="18" FontWeight="SemiBold" Checked="SettingsChanged" Unchecked="SettingsChanged"/>
+      <TextBlock Text="RU" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#147D72" FontWeight="SemiBold"/>
+     </DockPanel>
+     <TextBlock Text="Нажмите коротко — обычная буква. Удерживайте — башкирская." TextWrapping="Wrap" Foreground="#667F87" Margin="0,7,0,17"/>
+     <DockPanel Margin="0,0,0,8"><TextBlock Text="Время удержания"/>
+      <TextBlock x:Name="DelayLabel" Text="450 мс" HorizontalAlignment="Right" FontWeight="SemiBold" Foreground="#147D72"/>
+     </DockPanel>
+     <Slider x:Name="DelaySlider" Minimum="250" Maximum="800" TickFrequency="25" IsSnapToTickEnabled="True" Value="450" ValueChanged="DelayChanged" AutomationProperties.Name="Время удержания в миллисекундах"/>
+     <DockPanel Margin="0,4,0,0"><TextBlock Text="250 мс · быстрее" FontSize="11" Foreground="#809399"/>
+      <TextBlock Text="800 мс · спокойнее" FontSize="11" Foreground="#809399" HorizontalAlignment="Right"/>
+     </DockPanel>
+    </StackPanel>
+   </Border>
+   <Border Style="{StaticResource Card}">
+    <StackPanel><TextBlock Text="Буквы" FontSize="18" FontWeight="SemiBold" Margin="0,0,0,12"/>
+     <UniformGrid x:Name="MappingGrid" Columns="3"/>
+    </StackPanel>
+   </Border>
+   <Border Style="{StaticResource Card}">
+    <StackPanel><TextBlock Text="Поведение приложения" FontSize="18" FontWeight="SemiBold" Margin="0,0,0,8"/>
+     <CheckBox x:Name="StartupBox" Content="Запускать вместе с Windows" Checked="SettingsChanged" Unchecked="SettingsChanged"/>
+     <CheckBox x:Name="TrayBox" Content="Показывать значок в трее" Checked="SettingsChanged" Unchecked="SettingsChanged"/>
+     <CheckBox x:Name="LoggingBox" Content="Диагностический журнал (без введённого текста)" Checked="SettingsChanged" Unchecked="SettingsChanged"/>
+    </StackPanel>
+   </Border>
+   <Border Background="#E8F2EF" CornerRadius="10" Padding="16" Margin="0,0,0,17">
+    <TextBlock Text="Замена работает в доступных текстовых полях. Другая клавиша, щелчок или смена окна отменяют удержание. В полях паролей и при невозможности проверить курсор замена пропускается." TextWrapping="Wrap" FontSize="12" Foreground="#42665E"/>
+   </Border>
+   <DockPanel><Button Content="Сбросить настройки" Click="ResetClick" HorizontalAlignment="Left"/>
+    <Button Content="Выход" Click="ExitClick" HorizontalAlignment="Right"/>
+   </DockPanel>
+   <TextBlock x:Name="SaveStatus" Text="Настройки сохраняются автоматически" FontSize="11" Foreground="#809399" Margin="0,13,0,0"/>
+  </StackPanel>
+ </ScrollViewer>
+</Window>
