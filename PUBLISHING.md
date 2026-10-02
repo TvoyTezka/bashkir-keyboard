@@ -43,3 +43,17 @@ Workflow **Prepare release** выполняет сборку/тесты и со�
 ## Лицензия и авторство
 
 Выбрана MIT. В уведомлении об авторстве указан `TvoyTezka`, имя из локальной настройки Git, и участники проекта. Если хотите другое публичное имя, измените строку Copyright в LICENSE перед отправкой.
+
+## Hugging Face Space
+
+Статическая страница: https://huggingface.co/spaces/failed09/bashkort-keyboard.
+Используются те же файлы сайта, что и для GitHub Pages. Windows-сборка скачивается из GitHub Releases.
+
+Для обновления страницы после изменений:
+
+```powershell
+.\prepare-hf-space.ps1
+hf upload failed09/bashkort-keyboard artifacts/hf-space . --type space --commit-message 'Update website'
+```
+
+Вход через `hf auth login`; токен не добавляйте в файлы проекта. Скрипт подготавливает только файлы сайта, лицензию и карточку Space.

@@ -2,7 +2,7 @@
 
 Башкирские буквы на привычной русской раскладке: короткое нажатие вводит обычную букву, удержание — башкирскую. Приложение работает в фоне на Windows 10/11.
 
-**[Скачать](https://github.com/TvoyTezka/bashkort-keyboard/releases/latest) · [Сайт](https://tvoytezka.github.io/bashkort-keyboard/) · [Сообщить об ошибке](https://github.com/TvoyTezka/bashkort-keyboard/issues/new/choose)**
+**[Скачать](https://github.com/TvoyTezka/bashkort-keyboard/releases/latest) · [Сайт](https://tvoytezka.github.io/bashkort-keyboard/) · [Попробовать на Hugging Face](https://huggingface.co/spaces/failed09/bashkort-keyboard) · [Сообщить об ошибке](https://github.com/TvoyTezka/bashkort-keyboard/issues/new/choose)**
 
 ## Начать пользоваться
 

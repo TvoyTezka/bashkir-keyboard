@@ -9,6 +9,7 @@
   <link rel="icon" href="assets/app-icon.png">
   <link rel="stylesheet" href="style.css">
   <script src="site.js" defer></script>
+  <script src="demo.js" defer></script>
 </head>
 <body>
   <header class="navigation container">
@@ -32,6 +33,24 @@
         <div class="demo-caption"><span>Короткое нажатие <strong>о</strong></span><span>С Shift <strong>Ө</strong></span></div>
         <p>Привычное движение — нужная буква.</p>
       </div>
+    </section>
+    <section class="try-section container" aria-labelledby="try-title">
+      <span class="eyebrow">ПОПРОБУЙТЕ ПРЯМО ЗДЕСЬ</span>
+      <h2 id="try-title">Одно нажатие. Две буквы.</h2>
+      <p>Нажмите кнопку коротко для русской буквы или удерживайте 450 мс для башкирской. На телефоне — удерживайте пальцем.</p>
+      <div class="try-keys" aria-label="Кнопки для демонстрации">
+        <button type="button" data-letter="а" data-hold="ә" aria-label="А, при удержании Ә">А <small>Ә</small></button>
+        <button type="button" data-letter="о" data-hold="ө" aria-label="О, при удержании Ө">О <small>Ө</small></button>
+        <button type="button" data-letter="у" data-hold="ү" aria-label="У, при удержании Ү">У <small>Ү</small></button>
+        <button type="button" data-letter="к" data-hold="ҡ" aria-label="К, при удержании Ҡ">К <small>Ҡ</small></button>
+        <button type="button" data-letter="г" data-hold="ғ" aria-label="Г, при удержании Ғ">Г <small>Ғ</small></button>
+        <button type="button" data-letter="с" data-hold="ҫ" aria-label="С, при удержании Ҫ">С <small>Ҫ</small></button>
+        <button type="button" data-letter="з" data-hold="ҙ" aria-label="З, при удержании Ҙ">З <small>Ҙ</small></button>
+        <button type="button" data-letter="х" data-hold="һ" aria-label="Х, при удержании Һ">Х <small>Һ</small></button>
+        <button type="button" data-letter="н" data-hold="ң" aria-label="Н, при удержании Ң">Н <small>Ң</small></button>
+      </div>
+      <div class="try-result"><output id="try-output" aria-label="Результат демонстрации" aria-live="polite">Здесь появятся буквы</output><button type="button" id="try-clear">Очистить</button></div>
+      <p class="try-note">Демонстрация работает только с этими кнопками. Для ввода в других приложениях скачайте программу для Windows. Буквы не сохраняются и не отправляются.</p>
     </section>
     <section class="mapping-section container" aria-labelledby="letters-title">
       <div class="section-intro"><span class="eyebrow">ВСЕ НУЖНЫЕ БУКВЫ</span><h2 id="letters-title">Девять соответствий.<br>Ничего лишнего.</h2><p>Каждую замену можно включить отдельно.<br>Регистр учитывает Shift и Caps Lock.</p></div>

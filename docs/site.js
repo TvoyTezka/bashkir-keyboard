@@ -12,10 +12,14 @@ async function configureRepository() {
   for (const [name, url] of Object.entries(links)) {
     document.querySelectorAll(`[data-${name}]`).forEach(link => {
       link.href = url;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
       link.hidden = false;
     });
   }
   const button = document.getElementById('download');
+  button.target = '_blank';
+  button.rel = 'noopener noreferrer';
   button.href = `${root}/releases`;
   button.textContent = 'Перейти к скачиванию ↓';
   try {
